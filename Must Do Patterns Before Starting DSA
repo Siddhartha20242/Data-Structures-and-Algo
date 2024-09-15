@@ -1,1 +1,269 @@
+                      Pattern 1
+                * * * * *
+                * * * * *
+                * * * * *
+                * * * * *
+                * * * * *
+
+Approach:
+There are four ways to do the pattern based problems questions:
+
+1. We always use nested loop for printing the patterns. For the outer loop, we count the
+number of lines/rows and loop for them.
+
+2. Next, for the inner loop, we focus on the number of columns and somehow connect them to
+the rows by forming a logic such that for each row we get the required number of columns to
+be printed.
+
+3. We print the '*' inside the inner loop.
+
+4. Observe symmetry in the pattern or check if a pattern is a combination of two or more similar
+patterns.
+
+
+                  Code
+
+function pattern1(N){
+       const N = 5; // Fixed size for the pattern
+
+    // Loop for each row;
+    for (let i = 0; i < N; i++){
+        let row = ""; // Initialize an empty string for the current row.
+
+    // Loop for each column
+    for (let j = 0; j < N; j++){
+         row += "* "; // Append a star followed by a to the row string 
+
+    }
+          console.log(row);
+    }
+}
+pattern1();
+
+
+
+
+
+
+                        Pattern 2
+
+          *
+          * *
+          * * *
+          * * * *
+          * * * * *
+
+In this problem, we run the outer loop for N times as we have to print N rows, and since
+we have to print a right-angled triangle/ pyramid which must be upright, the inner loop
+will run for the row in each iteration. For eg: 1 star for row 1, and 5 star for row 5.
+
+                    Code
+
+function pattern2(){
+          const N = 5;
+              // Loop for each row
+            for (let i = 0; i < N; i++){
+               let row = ""; //Initialize an empty string for the current row
+
+            for (let j = 0; j <= N; j++){  // Loop for each column in the current row.
+                let row += "*";
+             }
+            console.log(row)
+            }
+}
+
+
+
+                             Pattern 3
+
+             1
+             1 2
+             1 2 3
+             1 2 3 4
+             1 2 3 4 5
+
+In this pattern, we run the outer loop for N times as we have to pring N rows, and since 
+we have to print a right-angled triangle/ pyramid which must be upright, so the inner loop will
+run for the row number in each iteration. For eg: 1 number for row 1, 5 numbers for row 5, and so on.
+The only difference between this pattern and pattern 2 is that here we print numbers looping from
+1 to the row number for each row instead of printing stars.
+
+                       Code 
+
+function pattern3(){
+        const N = 5;
+
+      //Loop for each row
+      for (let i = 1; i <= N; i++){
+            let row = ""; // Initialize an empty string for the current row
+
+      // Loop for each number in the current row
+       for (let j = 1, j <= i; j++){
+          row += j + " "; // Append the number followed by a space to the new string
+       }
+          console.log(row);
+      }
+}
+pattern3();
+
+
+
+
+
+                   Pattern 4
+
+                 1
+                 2 2
+                 3 3 3
+                 4 4 4 4
+                 5 5 5 5 5
+                 6 6 6 6 6 6
+
+In this pattern, we run the outer loop for N times as we have to print N rows, and since
+we have to print right-angled triangle/pyramid which must be upright, so the inner loop will
+run for the row number in each iteration. 
+
+                    Code
+        function pattern4(N){
+
+        // THis is a outer loop which will loop for the rows.
+          for (let i = 1, i <= N; i++){
+              let row = '';
+          for (let j = 1; j <= i; j++){
+             row += i + ' ';
+          }
+               console.log(row.trim());
+          }
+        }
+let N = 5;
+pattern4(N);
+
+                  iteration details
+1. Outer Loop (i = 1)
+  row += i + ' '; => row = 1
+2. Outer Loop (i = 2)
+  Inner Loop (j = 1): 
+     row += i + ' '; => row = ' 2 '
+  Inner Loop (j = 2):
+row += i + ' '; => row = ' 2 2 '
+
+
+              
+
+              
+                       Pattern 5
+                * * * * * *
+                * * * * * 
+                * * * * 
+                * * * 
+                * * 
+                * 
+
+In this pattern, we run the outer loop for N times as we have to print N rows and since 
+we have to print a right angle triangle/ pyramid must be inverted, the inner loop will run in
+decreasing order of stars.
+
+function pattern5(N) {
+    // This is the outer loop which will loop for the rows.
+    for (let i = 0; i < N; i++) {
+        let row = '';
+        // This is the inner loop which loops for the columns
+        // The number of columns = (N - row index) for each line here.
+        for (let j = N; j > i; j--) {
+            row += '* ';
+        }
+        
+        // Output the row and move to the next line
+        console.log(row.trim());
+    }
+}
+
+// Example usage with N = 5
+let N = 5;
+pattern5(N);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
