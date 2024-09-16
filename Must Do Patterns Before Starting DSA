@@ -185,6 +185,301 @@ pattern5(N);
 
 
 
+                            Pattern 6
+
+                     Input Format: N = 6
+                     Result:
+                      1 2 3 4 5 6
+                      1 2 3 4 5
+                      1 2 3 4
+                      1 2 3
+                      1 2 
+                      1
+
+In this pattern we run the outer loop for N times as we have to print N rows and since
+we have to print a right-angled triangle/pyramid which must be inverted, so the innner loop
+will run from 1 to (N - i)th integer in every row till we reach the Nth row where only '1'
+would be left to get printed. For eg: in the 1st-row numbers from 1 to N get printed, in the 
+2nd-row numbers form 1 to (N - 1) get printed, and so on.
+
+                        Code
+
+function pattern6(N){
+           for (let i = 0; i < N; i++){
+                let row = ' ';
+            for (let j = N; j > i; j--){
+                row += (N - j + i) + ' '; 
+            }
+               console.log(row.trim());
+           }
+}
+const N = 5;
+pattern6(N)
+
+
+                    Pattern 7 - Star Pyramid
+
+                        *     
+                       ***    
+                      *****   
+                     *******  
+                    ********* 
+                   ***********
+
+In this particular pattern, we run the outer loop for N times as we have to print N rows as
+usual. As we can clearly observe that for each row there are some spaces that get 
+printed then some stars and then again some spaces giving it a final pyramidal look. 
+For eg: In the first row (i=0) there are 4 spaces, 1 star, then again 4 spaces. 
+In the second row (i=1) there are 3 spaces, 3 stars, then again 3 spaces so we 
+can say that there are N-i-1 spaces, 2*i+1 stars, and then again N-i-1 spaces for 
+each row where i is the row index. We thus simply run 3 inner loops first for printing
+the spaces, then the stars, and then the spaces again.
+
+
+                          Code
+function pattern7(N) {
+    // Loop through each row
+    for (let i = 0; i < N; i++) {
+        let row = '';
+
+        // Print leading spaces
+        for (let j = 0; j < N - i - 1; j++) {
+            row += ' ';
+        }
+
+        // Print stars
+        for (let j = 0; j < 2 * i + 1; j++) {
+            row += '*';}
+
+        // Print trailing spaces (optional, as trailing spaces don't affect the output in this case)
+        // Uncomment the following loop if you want to visualize the trailing spaces
+        /*
+
+        for (let j = 0; j < N - i - 1; j++) {
+            row += ' ';
+        }
+        */
+
+        // Output the row
+        console.log(row);
+    }
+}
+const N = 5;
+pattern7(N);
+
+
+
+                          Pattern- 8
+
+
+                       ***********
+                        *********
+                         *******
+                          ***** 
+                           ***    
+                            *
+
+
+
+We can clearly observe that for each row there are some spaces that get printed then some
+stars and then given some spaces giving it an inverse pyramid look. For eg: In the first 
+row (i = 0) there are 0 spaces, 9 stars, then again 0 spaces. In the second row (i = 1) there
+is 1 space, 7 stars and then again 1 spcae. So we can say that here are i spaces, 2*N - (2*i+1)
+stars, and then again i space for each row where i is the row index. We thus simply run 
+3 inner loops, first for printing the spaces, then the stars, and then the spaces again.
+
+                          Code
+ function pattern8(N){
+          for (let i = 0; i < N; i++){
+              let row = ' '.repeat(i);
+          row += '*'.repeat(2 * N - (2 * i - 1));
+          row += ' '.repeat(i)
+          console.log(row);
+          }
+ 
+ }
+let N = 5;
+pattern3(N);
+
+
+
+
+
+                          Pattern 9
+
+                    Input Format: N = 6
+                         Result:   
+                           *
+                          ***
+                         ***** 
+                        *******
+                       *********
+                      ***********  
+                      ***********
+                       *********
+                        *******
+                         ***** 
+                          ***    
+                           *
+
+function errectPyramid(N){
+         for (let i = 0; i < N; i ++){
+          let row = ' '.repeat(N - i - 1);
+          row += '*'.repeat(2 * i + 1); 
+          row += ' '.repeat(N - i - 1);
+          console.log(row);
+         }
+}
+
+function invertedPyramid(N){
+        for(let i = 0; i < N; i++){
+            let row = ' '.repeat(i);
+            let row += ' '.repeat(2 * N - (2 * i + 1));
+            row += ' '.repeat(i);
+            console.log(row);
+        }
+}
+
+function diamondPattern(N){
+ erectPyramid(N);
+ invertedPyramid(N);
+}
+let N = 5;
+diamondPyramid(N);
+
+
+
+
+
+
+
+                          Pattern 10
+
+                  Input Format: N = 6
+                   
+                      Result:   
+                          *
+                          **
+                          *** 
+                          ****
+                          *****
+                          ******  
+                          *****
+                          ****
+                          ***    
+                          **
+                          *
+
+In this problem, we have to print only the right half of the star diamond pattern as
+discussed in the previous article. So, we can observe from the examples for N = 3 we 
+have 5 rows, and for N = 6 we have 11 rows, hence the outer loop will run un for 2*N -1 
+times. For the inner loop where we print the stars if row no. is less than or equal to
+N, then we observe that the stars which are printed in each row are equal to the row 
+index itself. But, when i becomes more than N, then the no. of stars decreases by 1 with 
+each increasing row. So, therefore the stars printed would be 2*N - i after i becomes greater 
+than N.
+
+function pattern10(N) {
+    // Outer loop for number of rows.
+    for (let i = 1; i <= 2 * N - 1; i++) {
+        let stars;
+
+        // Determine the number of stars for each row.
+        if (i <= N) {
+            stars = i; // For the first half
+        } else {
+            stars = 2 * N - i; // For the second half
+        }
+
+        // Build the row with the required number of stars
+        let row = '*'.repeat(stars);
+
+        // Print the row
+        console.log(row);
+    }
+}
+
+// Example usage
+let N = 5;
+pattern10(N);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
