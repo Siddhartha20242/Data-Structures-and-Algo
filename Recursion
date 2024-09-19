@@ -1,0 +1,176 @@
+What is Recursion?
+-- recursion is a phenomenon when a function call itself repeatedly until a specified condition
+is fulfilled.
+
+Understanding Recursion
+-- If a function keeps calling itself without a base condition, it will run indefinitely until
+the stack runs out of memory(resulting in stack overflow).
+
+What is stack overflow in Recusrion?
+-- When recursive calls are made, they are stored in a recursion stack. A recursive function
+  can only complete if a base condition is fulfilled, allowing control to return to the parent 
+  funtion. Without a base condition, the function continues to call itself, leading to stack
+  overflow(exceeding the memory limit of the recursion stack).
+
+
+Base condition
+The base condition is essential in a recursive function to ensure it terminates and doesnot
+run indefinitely. Once the base condition is met, the function stops executing and returns
+control back to the parent function.
+
+Example:
+
+cnt = 0
+def print_numbers():
+   global cnt
+   #THis is the base condition
+   if cnt == 3:
+     return
+   print(cnt) #Print current count
+   cnt += 1
+   print_numbers()
+
+if __name__ == '__main__':
+     print_numbers()
+
+
+
+
+PRINT NAME N TIMES USING RECURSION
+
+Problem: Print your name N times using recursion
+def printName(i, N):
+   if i > N:
+     return
+   print("Siddhartha")
+   printName(i + 1, N)
+
+if __main__ == '__main__':
+       n = 4
+       printName(1, n)
+
+TIME COMPLEXITY - 0(N) - As the function is called N times
+SPACE COMPLEXITY - O(N) - The recursion stack may hold N function calls in the worst case.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
