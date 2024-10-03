@@ -35,22 +35,287 @@ if __name__ == '__main__':
 
 
 
+                  PRINT NAME N TIMES USING RECURSION
 
-PRINT NAME N TIMES USING RECURSION
+    function func(1, n){
+         // Base Condition
+    if (i > n) return;
+    console.log('Siddhartha');
 
-Problem: Print your name N times using recursion
-def printName(i, N):
-   if i > N:
-     return
-   print("Siddhartha")
-   printName(i + 1, N)
+    // Function call to print till i increments
+    func(i + 1, n);
+   }
+    function main(){
+    //Prompt the user for input. Use the parsing method to do so means that
+      if the argument value is not a string, it will be converted to one using the 
+      ToString abstraction method. Parsing basically means to analyze a string of symbols
+      in either natural language or computer languages, to extract meaningful information or structure
+from it.
 
-if __main__ == '__main__':
-       n = 4
-       printName(1, n)
 
-TIME COMPLEXITY - 0(N) - As the function is called N times
-SPACE COMPLEXITY - O(N) - The recursion stack may hold N function calls in the worst case.
+
+    let n = parseInt(prompt("Enter a number: ")); // Using prompt to get user input
+    func(1, n);
+}
+main();
+
+
+
+
+                      PRINT 1 TO N USING RECURSION
+
+function func(i, n){
+    if (i > n) return; // THis is the base case 
+    console.log(i);
+
+    func(i + 1, n); // This is the function call to print i till i increments to n
+}
+func main(){
+   let n = 4;
+   func(1, n);
+}
+// This is the function call that is used to call the function and will execute it.
+main();
+
+Using the Alternative Approach(Backtracking)
+
+          function func(i, n){
+               // Base condition
+              if (i < 1) return; // If i is less than 1, terminate the recursion
+          
+              func(i - 1, n); // Function call to print (n - 1) integers
+              console.log(i); // Print the current value of i;
+          }
+          
+          function main(){
+              let n = parseInt(prompt("Enter a number: ")) // Get a user input
+              func(n, n); // Start the recursion from n
+          }
+          
+          //Execute the main function
+          main();
+
+Time Complexity: 0(N) - Since the function is being called N times, and for each function call,
+we have only one printable line that takes 0(1) time, so the cumulative time complexity would
+be 0(N).
+
+
+
+
+
+                    PRINT N TO 1 USING RECURSION
+
+function func(i, n){
+     // Base Condition
+      if (i < n) return; // If i is less than 1, terminate the recursion
+      console.log(i); // Print the current value of i
+
+     // Recursive call to print i until it decrements to 1.
+      func(i - 1, n); 
+}
+
+      function main(){
+          // Here, let's take the value of n to be 4
+          let n = 4;  // We can also use prompt to get input from the user
+          func(n, n); // Start the recursion from n
+      }
+      //Execute the main function
+      main();
+
+
+- Time Complexity - 0(N): Since the function is called N times, and for each function call,
+we have only one printable line that takes 0(1) time, the cumulative time complexity is 0(N).
+
+               Space Complexity
+0(N): In the worst case, the recursion stack space would be full with all the function calls
+waitiong to be completed, making it 0(N) recursion stack space.
+
+
+
+        Alternative Approach(backtracking)
+
+        function func(i, n){
+           // Base condition
+            if (i >  n) return; // If i is greater than n, terminate the recursion
+            
+            func(i + 1, n); // Recursive call to print(i + 1) integers
+            
+            console.log(i) // Print the current value of i
+        
+        }
+        function main(){
+            // Here, let's take the value of n to be 4
+            let n = 4; // We can also use prompt to get input from the user.
+            func(i, n); // Start the recursion from 1
+        }
+        main(); // Execute the main function.
+
+
+
+
+
+
+
+
+
+
+            SUM OF FIRST N NATURAL NUMBERS
+
+Problem Statement:
+Given a number of 'N', find out the sum of the first N natural numbers.
+
+
+          Solution 1: Using the loop
+
+function sumUsingLoop(n){
+    let sum = 0
+    for (let i = 0, i <= n, i++){
+          sum += i
+   }
+console.log(`The sum of the first {n} numbers is: ${sum}`)
+}
+sumUsingLoop(5);
+sumUsingLoop(6);
+
+Time Complexity: 0(N)
+Space Complexity: 0(1)
+
+
+
+              Using the Formula
+
+We can use the formula for the sum of N numbers i.e N(N + 1) / 2.
+
+function sumUsingFormula(n){
+      let sum = (n + (n + 1)) / 2;
+       console.log(`The sum of the first ${n} numbers is: ${sum}`);
+
+}
+sumUsingFormula(5);
+sumUsingFormula(4);
+
+Time Complexity: 0(1)
+Time Complexity: 0(1)
+
+
+
+          Recursive Approach
+
+1. Parameterized Way
+- In this approach, instead of using a global variable for calculating the sum, we pass the 
+sum in the parameters of the function.
+
+function sumParameterized(i, sum){
+    // Base Condition
+     if (i < 1){
+      console.log(sum);
+      return;
+   }
+   sumParameterized(i - 1, sum + 1); // Function call to increment sum by i until i decrements
+to 1
+}
+const n1 = 3;
+sumParameterized(n1, 0)
+
+Time Complexity: 0(N)
+Space Complexity: 0(N)
+
+
+
+          2. Functional Way
+
+- This approach uses a simple recursion method.
+ function sumFunctional(n){
+     if (n == 0){
+         return 0;
+     }
+      return n + sumFactorial(n - 1);
+}
+const n2 = 3;
+console.log(sumFunctional(n2));
+
+Time Complexity: 0(N)
+Space Complexity: 0(N)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    FACTORIAL OF A NUMBER: ITERATIVE AND RECURSIVE
+
+Solution 1: Iterative Approach
+
+          function factorialIterative(X){
+                   let ans = 0;
+                  for (let i = 1; i <= X; i++){
+                       ans += 1;
+                  }
+                   return ans;
+          }
+          
+          const X1 = 5;
+          const result1 = factorailIterative(X1);
+          console.log(`The factorail of ${x} is ${result1}`); 
+
+Time Complexity: 0(N)
+Space Complexity: 0(1)
+
+
+Solution 2: Recursive Approach
+
+Approach: The factorial of a number X can be defined recursively:
+factorial(X) = N * factorial(N - 1)
+Base case: If N = 0, return 1, 
+
+
+          function factorailRecursion(n){
+               if (n == 0){
+                  return 1;
+               }
+                return n * factorailRecursion(n - 1);
+          }
+          // Example usage
+          const X2 = 3;
+          const result2 = factorialRecursive(X2)
+          console.log(result2); // Output: 6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
