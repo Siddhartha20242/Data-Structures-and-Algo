@@ -253,7 +253,7 @@ Space Complexity: 0(N)
 
 
 
-                    FACTORIAL OF A NUMBER: ITERATIVE AND RECURSIVE
+                    FACTORIAL OF N NUMBER: ITERATIVE AND RECURSIVE
 
 Solution 1: Iterative Approach
 
@@ -295,9 +295,213 @@ Base case: If N = 0, return 1,
 
 
 
+            REVERSE A GIVEN ARRAY
+
+        Solution 1: Using an extra array
+
+Approach: Declare an array, ans[] of the same size as the input array. Iterate
+from the back of the input array while sorting the elements in ans[] in opposite direction.
+
+// This is a non-inplace swapping.
+function printArray(arr){
+      console.log('The reversed array is: ');
+      console.log(arr.join(" "));
+}
+function reverseArrayUsingExtra(arr){
+      const n = arr.length;
+      const ans = new Array(n);
+      for (let i = n - 1; i >= 0; i--){  // Initially our i is 4 because the length of our arr is 4 so n-1 = 4.
+
+// Now in the next line we set the ans[5-4-1] = arr[0] So ans[4] = arr[ans]. The index of the original arr is 
+n-1 so we have done from that.
+
+        ans[n - i - 1] = arr[i];
+      }
+        printArray(ans);
+}
+const arr1 = [5, 4, 3, 2, 1] 
+reverseArrayUsingExtraArray(arr1); // Explain this using example in each line.
+
+Time Complexity: 0(n)
+Space Complexity: 0(n)(for the extra space)
 
 
 
+                      Space Optimized Method - Iterative
+We use the same array to obtain the result. Use two pointers, p1 at the start and
+p2 at the end of the array. Swap the element's provided by p1 and p2, then increemnt p1
+and p1.
+
+
+       function reverseArrayInPlace(arr){
+           let p1 = 0;              // IN this and next line we use two pointers to do the swaping of elements.
+           let p2 = arr.length - 1;
+           while (p1 < p2){
+             [arr[p1], arr[p2]] = [arr[p2], arr[p1]];
+              p1++;
+              p2++;
+           }
+          printArray(arr);
+       }
+cosnt arr2 = [5, 4, 3, 2, 1]
+reverseArrayInPlace(arr2);
+
+
+
+                      Recursive Method
+- This method takes the array, a start index, an end index as parameters. Swap
+the elements at the start and end index, then recursively call the function for the 
+subarray.
+
+function recursiveArrayRecursively(arr, start, end){
+   if (start < end){
+         [arr[start], arr[end]] = [arr[end], arr[start]];
+          recursiveArrayRecursively(arr, start + 1, end - 1);
+   }
+}
+
+const arr3 = [5, 4, 3, 2, 1]
+reverseArrayRecursively(arr3, 0, arr3.length - 1);
+printArray(arr3);
+
+Time Complexity: 0(n)
+Space Complexity: 0(1)
+
+
+
+
+            Using Built-in Function
+- Using the built in Array.prototypereverse() method to reverse the array in place.
+
+function reverseArrayUsingBuiltIn(arr){
+           arr.reverse();
+          printArray(arr);
+}
+const arr4 = [5, 4, 3, 2, 1]
+reverseArrayUsingBuiltIn(arr4);
+
+
+                      Checking If a given string is Palindrome or not
+
+A string is said to be palindrome if the reverse of the string is the same as the 
+string.
+
+Approach:
+1. Run for a loop till half the length of the string in order to check the first and last
+ character of the string.
+2. Check if the first and last elements of the string are equal. And then move 
+both pointers first pointer forward and last pointer backward.
+
+
+
+        First Approach
+/* Function to check if a given string is a palindrome.
+/* A string is a palindrome if it reads the same forwards and backwards.
+
+/**
+ * Function to check if a given string is a palindrome.
+ * A string is a palindrome if it reads the same forwards and backwards.
+ *
+ * @param {string} str - The string to check.
+ * @returns {boolean} - Returns true if the string is a palindrome, false otherwise.
+ * 
+ * @example
+ * 
+ * const result = isPalindrome("ABCDCBA");
+ * console.log(result); // Outputs: true
+ */
+function isPalindrome(str) {
+    let left = 0;                // Initialize left pointer
+    let right = str.length - 1;  // Initialize right pointer
+
+    while (left < right) {
+        const l = str.charAt(left);  // Get character at left pointer
+        const r = str.charAt(right); // Get character at right pointer
+        
+        // Ignore non-alphanumeric characters
+        if (!isLetterOrDigit(l)) {
+            left++; // Move left pointer to the right
+        } else if (!isLetterOrDigit(r)) {
+            right--; // Move right pointer to the left
+        } else if (l.toLowerCase() !== r.toLowerCase()) {
+            return false; // Characters do not match
+        } else {
+            left++;  // Move both pointers inward
+            right--;
+        }
+    }
+    
+    return true; // All characters matched, it is a palindrome
+}
+
+/**
+ * Helper function to check if a character is a letter or a digit.
+ * 
+ * @param {string} char - The character to check.
+ * @returns {boolean} - Returns true if the character is a letter or digit, false otherwise.
+ * 
+ * @example
+ * 
+ * const isAlphaNumeric = isLetterOrDigit('A');
+ * console.log(isAlphaNumeric); // Outputs: true
+ */
+function isLetterOrDigit(char) {
+    return /^[A-Za-z0-9]$/.test(char); // Regular expression to match alphanumeric characters
+}
+
+// Example usage of isPalindrome function
+const str1 = "ABCDCBA";
+console.log(isPalindrome(str1) ? "Palindrome" : "Not Palindrome"); // Outputs: Palindrome
+
+const str2 = "TAKE U FORWARD";
+console.log(isPalindrome(str2) ? "Palindrome" : "Not Palindrome"); // Outputs: Not Palindrome
+
+
+
+
+
+
+
+
+
+
+            Reursive Approach
+/**
+ * Recursive function to check if a given string is a palindrome.
+ *
+ * @param {string} str - The string to check.
+ * @param {number} left - The current left index (defaults to 0).
+ * @param {number} right - The current right index (defaults to length of the string - 1).
+ * @returns {boolean} - Returns true if the string is a palindrome, false otherwise.
+ * 
+ * @example
+ * 
+ * const result = recursivePalindrome("madam");
+ * console.log(result); // Outputs: true
+ */
+function recursivePalindrome(str, left = 0, right = str.length - 1) {
+    // Base Condition: if left index exceeds or meets right index, all characters matched
+    if (left >= right) return true; 
+
+    // Ignore non-alphanumeric characters
+    if (!isLetterOrDigit(str.charAt(left))) {
+        return recursivePalindrome(str, left + 1, right); // Move left pointer
+    }
+    if (!isLetterOrDigit(str.charAt(right))) {
+        return recursivePalindrome(str, left, right - 1); // Move right pointer
+    }
+
+    // Check characters at left and right indices
+    if (str.charAt(left).toLowerCase() !== str.charAt(right).toLowerCase()) {
+        return false; // Characters do not match
+    }
+
+    // Move to the next pair of characters
+    return recursivePalindrome(str, left + 1, right - 1);
+}
+
+// Example usage of recursivePalindrome function
+console.log(recursivePalindrome("madam") ? "Palindrome" : "Not Palindrome"); // Outputs: Palindrome
 
 
 
