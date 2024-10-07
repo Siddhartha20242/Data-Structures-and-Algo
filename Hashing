@@ -1,0 +1,61 @@
+
+                            Hashing:
+Introduction to hasing:
+- Hashing is a techquine used to convert a range of key values into a range of indices of an
+array. It is commonly used for fast data retrieval.
+
+      Importance of Hashing
+- Hasing allows for quick data retrieval, particularly useful when counting occurences in 
+ datasets.
+
+              Problem: Counting Occurences in an Array
+
+Problem Statement
+- Given an array of integers and a list of queries, count how many times each queried integer
+appears in the array.
+
+                          Brute Force Approach
+Using nested loops to count occurences results in a time complexity of O(Q * N).
+
+Example Code:
+
+    function CountOccurenceBrute(arr, queries){
+      return queries.map(query => {
+           let count = 0;
+           for (let num of arr){
+               if (num === query) 
+                   count ++;
+           }
+             return count;
+      });
+    }
+
+const arr = [1, 2, 1, 3, 2];
+const queries = [1, 3, 4, 2, 10];
+console.log(countOccurenceBrute(arr, queries))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
